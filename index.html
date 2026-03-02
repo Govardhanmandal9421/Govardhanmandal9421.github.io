@@ -1,93 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Govardhan Mandal | Data Scientist</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Govardhan Mandal - Data Scientist & AI Engineer">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Govardhan Mandal | AI & Data Science</title>
+<meta name="description" content="Portfolio of Govardhan Mandal - AI & Data Science Student">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <h1>Govardhan Mandal</h1>
-        <p class="subtitle">Data Scientist | Machine Learning Engineer | Python Developer</p>
-        
-        <div class="buttons">
-            <a href="#projects" class="btn primary">View Projects</a>
-            <a href="Govardhan_Mandal_Resume.pdf" target="_blank" class="btn outline">Download Resume</a>
-        </div>
+<!-- Hero Section -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Govardhan Mandal</h1>
+    <p class="subtitle">AI Engineering Student & Data Scientist</p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn primary">View Projects</a>
+      <a href="Govardhan_Mandal_Resume.pdf" target="_blank" class="btn outline">Download Resume</a>
     </div>
+  </div>
+  <canvas id="bgCanvas"></canvas>
 </header>
 
+<!-- About Section -->
 <section id="about" class="container">
-    <h2>About Me</h2>
-    <p>
-        Results-driven AI Engineering student specializing in machine learning, 
-        data analytics, and Django-based web applications. 
-        Experienced in transforming 50,000+ record datasets into actionable insights 
-        using Python, Scikit-learn, and statistical modeling.
-    </p>
+  <h2>About Me</h2>
+  <p>
+    I build intelligent systems and data-driven web apps. Experienced in machine learning,
+    predictive modeling, and deploying Django-based applications.
+  </p>
 </section>
 
+<!-- Skills Section -->
 <section id="skills" class="container">
-    <h2>Technical Skills</h2>
-    <div class="skills-grid">
-        <div>Python</div>
-        <div>Django</div>
-        <div>Scikit-learn</div>
-        <div>Pandas / NumPy</div>
-        <div>Machine Learning</div>
-        <div>Data Visualization</div>
-        <div>Statistical Analysis</div>
-        <div>Database Management</div>
-    </div>
+  <h2>Technical Skills</h2>
+  <div class="skills-grid">
+    <div>Python</div>
+    <div>Django</div>
+    <div>Scikit-learn</div>
+    <div>Pandas / NumPy</div>
+    <div>Machine Learning</div>
+    <div>Data Visualization</div>
+    <div>Statistical Analysis</div>
+    <div>Database Management</div>
+  </div>
 </section>
 
+<!-- Projects Section -->
 <section id="projects" class="container">
-    <h2>Featured Projects</h2>
+  <h2>Featured Projects</h2>
 
-    <div class="card">
-        <h3>Student Placement Prediction System</h3>
-        <p>
-            Built ML-powered web app achieving <strong>88.37% accuracy</strong> 
-            using Stacking Classifier. Integrated model with Django for real-time predictions.
-        </p>
-        <a href="https://github.com/Govardhanmandal9421/student-placement-prediction" target="_blank">View on GitHub →</a>
-    </div>
+  <div class="card" data-gsap>
+    <h3>Student Placement Prediction</h3>
+    <p>ML-powered web app with 88.37% accuracy using Stacking Classifier integrated into Django.</p>
+    <a href="https://github.com/Govardhanmandal9421/student-placement-prediction" target="_blank">View on GitHub →</a>
+  </div>
 
-    <div class="card">
-        <h3>Data Visualization Dashboard</h3>
-        <p>
-            Analyzed 50,000+ records, identified 12+ insights, 
-            reduced processing time by 70% using automated pipeline.
-        </p>
-        <a href="https://github.com/Govardhanmandal9421/django-data-visualization-dashboard" target="_blank">View on GitHub →</a>
-    </div>
+  <div class="card" data-gsap>
+    <h3>Data Visualization Dashboard</h3>
+    <p>Automated EDA for 50,000+ records, 12+ actionable insights, reduced processing time by 70%.</p>
+    <a href="https://github.com/Govardhanmandal9421/django-data-visualization-dashboard" target="_blank">View on GitHub →</a>
+  </div>
 
-    <div class="card">
-        <h3>Recipe Management App</h3>
-        <p>
-            Full-stack Django app handling 1,000+ records with secure authentication 
-            and optimized database schema.
-        </p>
-    </div>
-
+  <div class="card" data-gsap>
+    <h3>Recipe Management App</h3>
+    <p>Full-stack Django app with secure authentication and optimized database schema.</p>
+  </div>
 </section>
 
+<!-- Contact Section -->
 <section id="contact" class="container">
-    <h2>Contact</h2>
-    <p>Email: g.s.mandal433@gmail.com</p>
-    <p>Location: Maharashtra, India</p>
-    <p>
-        <a href="https://github.com/Govardhanmandal9421" target="_blank">GitHub</a> |
-        <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank">LinkedIn</a>
-    </p>
+  <h2>Contact</h2>
+  <p>Email: g.s.mandal433@gmail.com</p>
+  <p>Location: Maharashtra, India</p>
+  <p>
+    <a href="https://github.com/Govardhanmandal9421" target="_blank">GitHub</a> |
+    <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank">LinkedIn</a>
+  </p>
 </section>
 
 <footer>
-    © 2026 Govardhan Mandal | Built with ❤️
+  © 2026 Govardhan Mandal | Built with ❤️
 </footer>
 
 <script src="script.js"></script>
