@@ -3,82 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govardhan Mandal | Data Scientist Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Govardhan Mandal | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #007bff; }
-        body { padding: 20px; }
-        header { text-align: center; padding: 40px 0; background: #f8f9fa; border-radius: 10px; margin-bottom: 30px; }
-        .contact-links a { margin: 0 10px; text-decoration: none; font-weight: bold; }
-        .skill-tag { background: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px; display: inline-block; margin: 5px; font-size: 0.9rem; }
-        article { border-top: 5px solid var(--primary); }
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #7dd3fc;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        header {
+            text-align: left;
+            margin-bottom: 60px;
+            border-left: 4px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -1px;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-family: 'Roboto Mono', monospace;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        .links {
+            margin-top: 20px;
+        }
+
+        .links a {
+            color: var(--text-dim);
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            color: var(--accent);
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: #33415566;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid #334155;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <main class="container">
+    <div class="container">
         <header>
-            <h1>GOVARDHAN MANDAL</h1>
-            <p>Data Science Student | Machine Learning Enthusiast | Django Developer</p>
-            <div class="contact-links">
-                <a href="mailto:g.s.mandal433@gmail.com">📧 Email</a> | 
-                <a href="https://github.com/Govardhanmandal9421" target="_blank">🐙 GitHub</a> | 
-                <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank">🔗 LinkedIn</a>
+            <h1>Govardhan Mandal</h1>
+            <div class="subtitle">Data Scientist & AI Engineering Student</div>
+            <div class="links">
+                <a href="mailto:g.s.mandal433@gmail.com">Email</a>
+                <a href="https://github.com/Govardhanmandal9421" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank">LinkedIn</a>
             </div>
-            <p style="margin-top:10px;">📍 Chh. Sambhaji Nagar, Maharashtra, India</p>
         </header>
 
-        <section>
-            <h2>About Me</h2>
-            <p>Results-driven Data Science student specializing in Python-based analytics and machine learning solutions. I enjoy transforming complex datasets into actionable insights. Currently pursuing B.E. in AI at GHRCE, Jalgaon (2027).</p>
+        <section id="about">
+            <h2>About</h2>
+            <p>I build intelligent systems. Focused on turning complex data into actionable insights using Python and Machine Learning. Currently exploring the intersection of AI and Web Development at GHRCE.</p>
         </section>
 
-        <section>
-            <h2>Technical Skills</h2>
-            <div>
-                <strong>Programming:</strong> <span class="skill-tag">Python</span> <span class="skill-tag">SQL</span><br>
-                <strong>Data Science:</strong> <span class="skill-tag">Pandas</span> <span class="skill-tag">NumPy</span> <span class="skill-tag">Scikit-learn</span> <span class="skill-tag">EDA</span> <span class="skill-tag">Matplotlib/Seaborn</span><br>
-                <strong>Web:</strong> <span class="skill-tag">Django</span> <span class="skill-tag">HTML/CSS</span><br>
-                <strong>Tools:</strong> <span class="skill-tag">Jupyter Notebook</span> <span class="skill-tag">VS Code</span> <span class="skill-tag">Git/GitHub</span>
+        <section id="skills">
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Django</div>
+                <div class="skill-item">Scikit-Learn</div>
+                <div class="skill-item">Pandas/NumPy</div>
+                <div class="skill-item">SQL</div>
+                <div class="skill-item">Machine Learning</div>
             </div>
         </section>
 
-        <hr>
-
-        <section>
-            <h2>Key Projects</h2>
+        <section id="projects">
+            <h2>Featured Projects</h2>
             
-            <article>
-                <h3>Student Placement Prediction System</h3>
-                <p>Built an ML-powered web application using Django that predicts placement outcomes with <strong>88.37% accuracy</strong> using a Stacking Classifier.</p>
-                <footer>
-                    <a href="https://github.com/Govardhanmandal9421/student-placement-prediction" target="_blank">View on GitHub</a>
-                </footer>
-            </article>
+            <div class="project-card">
+                <h3>Student Placement Prediction</h3>
+                <p>An ML-powered Django application using a Stacking Classifier to predict outcomes with 88.37% accuracy.</p>
+                <span class="tech-stack">#Python #Django #ML #ScikitLearn</span>
+            </div>
 
-            <article>
+            <div class="project-card">
                 <h3>Data Visualization Dashboard</h3>
-                <p>Developed an automated data cleaning pipeline and interactive dashboard for 50,000+ records using Matplotlib and Seaborn.</p>
-                <footer>
-                    <a href="https://github.com/Govardhanmandal9421/django-data-visualization-dashboard" target="_blank">View on GitHub</a>
-                </footer>
-            </article>
+                <p>Automated cleaning pipeline and interactive charts for 50,000+ records to drive strategic insights.</p>
+                <span class="tech-stack">#DataViz #Matplotlib #Seaborn #Django</span>
+            </div>
+
+            <div class="project-card">
+                <h3>Recipe Management App</h3>
+                <p>Full-stack web application with secure authentication and optimized database schema.</p>
+                <span class="tech-stack">#Django #ORM #FullStack</span>
+            </div>
         </section>
 
-        <section>
+        <section id="education">
             <h2>Education</h2>
-            <ul>
-                <li><strong>Bachelor of Engineering in Artificial Intelligence</strong><br>
-                G.H. Raisoni College of Engineering (GHRCE), Jalgaon<br>
-                <small>Expected Graduation: 2027</small></li>
-            </ul>
+            <p><strong>B.E. in Artificial Intelligence</strong><br>
+            <span style="color: var(--text-dim)">G.H. Raisoni College of Engineering, Jalgaon • Expected 2027</span></p>
         </section>
 
-    </main>
-
-    <footer style="text-align:center; padding: 20px; font-size: 0.8rem; color: #666;">
-        © 2026 Govardhan Mandal | Built with GitHub Pages
-    </footer>
+        <footer>
+            Built by Govardhan Mandal &copy; 2026
+        </footer>
+    </div>
 
 </body>
 </html>
