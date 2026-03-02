@@ -22,7 +22,7 @@ document.querySelectorAll('[data-gsap]').forEach(el => {
   });
 });
 
-// Hero background animation
+// Hero canvas animation
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -55,7 +55,6 @@ function animate(){
 }
 animate();
 
-// Resize canvas
 window.addEventListener('resize', ()=>{
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
