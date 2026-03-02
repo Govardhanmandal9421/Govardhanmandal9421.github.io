@@ -2,214 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Govardhan Mandal | Data Scientist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govardhan Mandal | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #7dd3fc;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Header Section */
-        header {
-            text-align: left;
-            margin-bottom: 60px;
-            border-left: 4px solid var(--accent);
-            padding-left: 20px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: -1px;
-            color: var(--text-main);
-        }
-
-        .subtitle {
-            font-family: 'Roboto Mono', monospace;
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-top: 5px;
-        }
-
-        .links {
-            margin-top: 20px;
-        }
-
-        .links a {
-            color: var(--text-dim);
-            margin-right: 20px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .links a:hover {
-            color: var(--accent);
-        }
-
-        /* Sections */
-        section {
-            margin-bottom: 50px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            color: var(--accent);
-        }
-
-        /* Project Cards */
-        .project-card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #334155;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .project-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.3rem;
-        }
-
-        .project-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
-
-        .tech-stack {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-top: 15px;
-            display: block;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-item {
-            background: #33415566;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 0.9rem;
-            border: 1px solid transparent;
-        }
-
-        .skill-item:hover {
-            border-color: var(--accent);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            border-top: 1px solid #334155;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-        }
-    </style>
+    <meta name="description" content="Portfolio of Govardhan Mandal - Data Scientist & AI Engineer">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<header>
     <div class="container">
-        <header>
-            <h1>Govardhan Mandal</h1>
-            <div class="subtitle">Data Scientist & AI Engineering Student</div>
-            <div class="links">
-                <a href="mailto:g.s.mandal433@gmail.com">Email</a>
-                <a href="https://github.com/Govardhanmandal9421" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank">LinkedIn</a>
-            </div>
-        </header>
+        <h1>Govardhan Mandal</h1>
+        <p class="subtitle">Data Scientist | Machine Learning Engineer | Python Developer</p>
+        
+        <div class="buttons">
+            <a href="#projects" class="btn primary">View Projects</a>
+            <a href="Govardhan_Mandal_Resume.pdf" target="_blank" class="btn outline">Download Resume</a>
+        </div>
+    </div>
+</header>
 
-        <section id="about">
-            <h2>About</h2>
-            <p>I build intelligent systems. Focused on turning complex data into actionable insights using Python and Machine Learning. Currently exploring the intersection of AI and Web Development at GHRCE.</p>
-        </section>
+<section id="about" class="container">
+    <h2>About Me</h2>
+    <p>
+        Results-driven AI Engineering student specializing in machine learning, 
+        data analytics, and Django-based web applications. 
+        Experienced in transforming 50,000+ record datasets into actionable insights 
+        using Python, Scikit-learn, and statistical modeling.
+    </p>
+</section>
 
-        <section id="skills">
-            <h2>Technical Stack</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Python</div>
-                <div class="skill-item">Django</div>
-                <div class="skill-item">Scikit-Learn</div>
-                <div class="skill-item">Pandas/NumPy</div>
-                <div class="skill-item">Machine Learning</div>
-            </div>
-        </section>
+<section id="skills" class="container">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+        <div>Python</div>
+        <div>Django</div>
+        <div>Scikit-learn</div>
+        <div>Pandas / NumPy</div>
+        <div>Machine Learning</div>
+        <div>Data Visualization</div>
+        <div>Statistical Analysis</div>
+        <div>Database Management</div>
+    </div>
+</section>
 
-        <section id="projects">
-            <h2>Featured Projects</h2>
-            
-            <div class="project-card">
-                <h3>Student Placement Prediction</h3>
-                <p>An ML-powered Django application using a Stacking Classifier to predict outcomes with 88.37% accuracy.</p>
-                <span class="tech-stack">#Python #Django #ML #ScikitLearn</span>
-            </div>
+<section id="projects" class="container">
+    <h2>Featured Projects</h2>
 
-            <div class="project-card">
-                <h3>Data Visualization Dashboard</h3>
-                <p>Automated cleaning pipeline and interactive charts for 50,000+ records to drive strategic insights.</p>
-                <span class="tech-stack">#DataViz #Matplotlib #Seaborn #Django</span>
-            </div>
-
-            <div class="project-card">
-                <h3>Recipe Management App</h3>
-                <p>Full-stack web application with secure authentication and optimized database schema.</p>
-                <span class="tech-stack">#Django #ORM #FullStack</span>
-            </div>
-        </section>
-
-        <section id="education">
-            <h2>Education</h2>
-            <p><strong>B.E. in Artificial Intelligence</strong><br>
-            <span style="color: var(--text-dim)">G.H. Raisoni College of Engineering, Jalgaon • Expected 2027</span></p>
-        </section>
-
-        <footer>
-            Built by Govardhan Mandal &copy; 2026
-        </footer>
+    <div class="card">
+        <h3>Student Placement Prediction System</h3>
+        <p>
+            Built ML-powered web app achieving <strong>88.37% accuracy</strong> 
+            using Stacking Classifier. Integrated model with Django for real-time predictions.
+        </p>
+        <a href="https://github.com/Govardhanmandal9421/student-placement-prediction" target="_blank">View on GitHub →</a>
     </div>
 
+    <div class="card">
+        <h3>Data Visualization Dashboard</h3>
+        <p>
+            Analyzed 50,000+ records, identified 12+ insights, 
+            reduced processing time by 70% using automated pipeline.
+        </p>
+        <a href="https://github.com/Govardhanmandal9421/django-data-visualization-dashboard" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="card">
+        <h3>Recipe Management App</h3>
+        <p>
+            Full-stack Django app handling 1,000+ records with secure authentication 
+            and optimized database schema.
+        </p>
+    </div>
+
+</section>
+
+<section id="contact" class="container">
+    <h2>Contact</h2>
+    <p>Email: g.s.mandal433@gmail.com</p>
+    <p>Location: Maharashtra, India</p>
+    <p>
+        <a href="https://github.com/Govardhanmandal9421" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank">LinkedIn</a>
+    </p>
+</section>
+
+<footer>
+    © 2026 Govardhan Mandal | Built with ❤️
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
