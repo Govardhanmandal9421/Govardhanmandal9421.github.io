@@ -213,12 +213,11 @@ img {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    /* Align content to the right */
-    text-align: right;
-    /* Text alignment to the right */
-    padding: 120px 80px 80px 24px;
-    /* More padding on the right */
+    justify-content: center;
+    gap: clamp(40px, 10vw, 120px);
+    /* Responsive gap */
+    padding: 80px 60px;
+    /* Reduced vertical padding */
     overflow: hidden;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('assets/ai-bg.png') no-repeat center center/cover;
 }
@@ -236,7 +235,8 @@ img {
     z-index: 2;
     max-width: 650px;
     margin: 0;
-    /* Align to the right side of flex container */
+    text-align: left;
+    /* Switching to left-aligned text for better balance with left photo */
 }
 
 /* Badge */
@@ -278,16 +278,13 @@ img {
 
 /* Profile - Neural Hologram Effect */
 .profile-wrapper {
-    position: absolute;
-    top: 140px;
-    left: 60px;
-    /* More padding from the left edge */
-    transform: none;
-    display: inline-block;
+    position: relative;
+    /* Use relative to stay in flex flow and prevent overlap */
     z-index: 99;
-    perspective: 1200px;
+    perspective: 1500px;
     cursor: pointer;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 /* Floating class added via scroll */
@@ -436,14 +433,14 @@ img {
 
 .profile-img-container {
     position: relative;
-    width: 340px;
-    /* Big & Bold */
-    height: 440px;
-    /* Big & Bold */
+    width: 480px;
+    /* Massive & Dominant */
+    height: 600px;
+    /* Massive & Dominant */
     transform-style: preserve-3d;
     transform: rotateY(-15deg) rotateX(10deg);
     transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    perspective: 1200px;
+    perspective: 1500px;
 }
 
 
@@ -459,8 +456,8 @@ img {
     filter: contrast(1.1) brightness(1.1);
     border: 2px solid rgba(56, 189, 248, 0.5);
     display: block;
-    mask-image: linear-gradient(to bottom, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent);
+    mask-image: none;
+    -webkit-mask-image: none;
 }
 
 /* Hologram Scanning Line */
@@ -505,10 +502,8 @@ img {
 }
 
 .hud-1 {
-    width: 360px;
-    /* Match new size */
-    height: 460px;
-    /* Match new size */
+    width: 500px;
+    height: 620px;
     top: -10px;
     left: -10px;
     border-left-width: 3px;
@@ -517,10 +512,8 @@ img {
 }
 
 .hud-2 {
-    width: 360px;
-    /* Match new size */
-    height: 460px;
-    /* Match new size */
+    width: 500px;
+    height: 620px;
     bottom: -10px;
     right: -10px;
     border-right-width: 3px;
