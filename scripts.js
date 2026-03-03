@@ -428,24 +428,26 @@ function spawnChip() {
 const chipInterval = setInterval(spawnChip, 1400);
 setTimeout(spawnChip, 500);
 
-// ---- Dynamic Profile Scroll Positioning (Follow Scroll - Top Left) ----
+// ---- Advanced Profile Scroll Following (Y-axis only to prevent overlap) ----
 window.addEventListener('scroll', () => {
     const pWrap = document.getElementById('profileWrapper');
     if (pWrap && !pWrap.classList.contains('expanded')) {
-        // ONLY apply scroll logic on Desktop (Width > 992px)
+        // ONLY apply follow logic on Desktop
         if (window.innerWidth > 992) {
             const scrollOffset = window.scrollY;
-            const initialTop = 140;
-            let targetTop = initialTop + (scrollOffset * 0.98);
 
+            // Move strictly vertically to stay in viewport
+            // 0.95 factor makes it "float" along with user
             gsap.to(pWrap, {
-                top: targetTop,
-                left: '60px',
-                scale: scrollOffset > 100 ? 0.65 : 1,
+                y: scrollOffset * 0.92,
+                scale: scrollOffset > 100 ? 0.8 : 1,
                 duration: 0.8,
                 ease: 'power2.out',
                 overwrite: 'auto'
             });
+        } else {
+            // Reset for mobile
+            gsap.set(pWrap, { y: 0, scale: 1 });
         }
     }
 });
