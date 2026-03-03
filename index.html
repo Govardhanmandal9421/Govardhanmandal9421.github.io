@@ -47,19 +47,46 @@
     ================================================= -->
     <header class="hero" id="hero">
         <canvas id="bgCanvas"></canvas>
+
+        <!-- Profile photo - Neural Hologram Style (Moved Outside) -->
+        <div class="profile-wrapper" id="profileWrapper">
+            <div class="close-portal" id="closePortal">✕</div>
+            <div class="hud-box hud-1"></div>
+            <div class="hud-box hud-2"></div>
+
+            <div class="data-tag tag-1">NEURAL_ID: 9421</div>
+            <div class="data-tag tag-2">STATUS: ANALYZING</div>
+            <div class="data-tag tag-3">LOC: MH_IN</div>
+
+            <div class="profile-img-container">
+                <img src="assets/govardhan.jpeg" alt="Govardhan Mandal" class="profile-img">
+            </div>
+
+            <div class="profile-info-portal">
+                <h2 class="portal-title">GOVARDHAN MANDAL</h2>
+                <div class="portal-spec">
+                    <span>● AI_ENG_2027</span>
+                    <span>● DATA_MINING_OPTIMIZED</span>
+                </div>
+                <p class="portal-desc">
+                    A results-driven AI Engineering student specializing in machine learning,
+                    data analytics, and full-stack development. Transforming complex data patterns
+                    into scalable neural solutions.
+                </p>
+                <div class="about-tags" style="margin-top:0;">
+                    <span class="tag">🤖 MACHINE LEARNING</span>
+                    <span class="tag">🐍 PYTHON EXPERT</span>
+                    <span class="tag">🌐 DJANGO BACKEND</span>
+                </div>
+            </div>
+        </div>
+
         <div class="hero-content">
 
             <!-- Available badge -->
             <div class="hero-badge" id="heroBadge">
                 <span class="badge-dot"></span>
                 Open to Work — Entry Level Roles
-            </div>
-
-            <!-- Profile photo -->
-            <div class="profile-wrapper" id="profileWrapper">
-                <img src="assets/govardhan.jpeg" alt="Govardhan Mandal" class="profile-img">
-                <div class="profile-ring"></div>
-                <div class="profile-ring ring-2"></div>
             </div>
 
             <h1 id="heroName">Govardhan Mandal</h1>
@@ -88,6 +115,15 @@
                         <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
                 </a>
+            </div>
+
+            <!-- AI Activity Monitor -->
+            <div class="ai-monitor" id="aiMonitor">
+                <div class="ai-dot-pulse"></div>
+                <span class="ai-monitor-txt">Neural Net &nbsp;<span id="aiLiveStatus">Analyzing...</span></span>
+                <div class="ai-meter">
+                    <div class="ai-meter-fill" id="aiMeterFill"></div>
+                </div>
             </div>
 
             <!-- Stats -->
@@ -288,7 +324,7 @@
                         <div class="skill-chip"><span class="chip-icon">🌐</span><span>Django</span></div>
                         <div class="skill-chip"><span class="chip-icon">📓</span><span>Jupyter Notebook</span></div>
                         <div class="skill-chip"><span class="chip-icon">💾</span><span>Joblib</span></div>
-                        <div class="skill-chip"><span class="chip-icon">🗄️</span><span>SQL / ORM</span></div>
+                        <div class="skill-chip"><span class="chip-icon">📊</span><span>Data Mining</span></div>
                     </div>
 
                     <!-- Core Competencies -->
@@ -452,7 +488,7 @@
                                 queries</li>
                         </ul>
                         <div class="project-tech">
-                            <span>Django</span><span>Python</span><span>HTML/CSS</span><span>SQLite</span>
+                            <span>Django</span><span>Python</span><span>HTML/CSS</span><span>Frontend Logic</span>
                         </div>
                         <a href="https://github.com/Govardhanmandal9421" target="_blank" class="project-cta">
                             View on GitHub
