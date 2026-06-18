@@ -1,161 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govardhan Mandal | AI & Data Science Portfolio</title>
-    <meta name="description" content="Portfolio of Govardhan Mandal – AI Engineering Student & Data Science fresher. Skilled in Python, Machine Learning, Django, and Data Visualization.">
-    <meta name="keywords" content="Govardhan Mandal, AI, Data Science, Machine Learning, Django, Python, Portfolio, GHRCE, Jalgaon">
+    <title>Govardhan Mandal | AI Engineering & Data Solutions</title>
+    <meta name="description" content="Professional portfolio of Govardhan Mandal, an AI Engineering student specializing in Machine Learning, predictive analytics, and full-stack data apps.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-
 <body>
 
-    <nav class="navbar" id="navbar">
+    <canvas id="ambientCanvas"></canvas>
+
+    <nav class="navbar" id="globalNavbar">
         <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-text">GOVARDHAN</span><span class="logo-dot">.</span>
+            <a href="#hero" class="nav-brand">
+                GOVARDHAN <span class="brand-accent">MANDAL</span>
             </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <a href="resume_updated.pdf" target="_blank" class="nav-cta" id="navCta">Download CV</a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#about" class="nav-item">About</a>
+                <a href="#skills" class="nav-item">Expertise</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#education" class="nav-item">Education</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="resume_updated.pdf" target="_blank" class="btn-nav-cta">View Resume</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <header class="hero" id="hero">
-        <canvas id="bgCanvas"></canvas>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge" id="heroBadge">
-                    <span class="badge-dot"></span>
-                    Open to Work — Entry Level Roles
+    <header class="hero-section" id="hero">
+        <div class="section-container hero-grid">
+            <div class="hero-text-block">
+                <div class="status-indicator">
+                    <span class="indicator-pulse"></span>
+                    <span class="indicator-text">Available for Internships & Entry-Level Roles</span>
                 </div>
-                <h1 id="heroName">Govardhan Mandal</h1>
-                <p class="subtitle">
-                    <span class="typed-text" id="typedText"></span><span class="cursor-blink">|</span>
+                <h1 class="hero-title">
+                    Building Scalable <br>
+                    <span class="gradient-text">Artificial Intelligence</span> Solutions.
+                </h1>
+                <p class="hero-subtitle">
+                    Specializing in <span id="dynamicType">AI Engineering</span><span class="type-cursor">|</span>
                 </p>
-                <p class="hero-desc" id="heroDesc">
-                    AI Engineering undergrad building data-driven solutions with Python & Machine Learning. Turning complex datasets into actionable insights through robust statistical engineering.
+                <p class="hero-description">
+                    Engineering data pipelines, optimized machine learning infrastructures, and interactive analytics interfaces. Bridging mathematical frameworks with clean, deployable python applications.
                 </p>
-                <div class="hero-buttons" id="heroButtons">
-                    <a href="#projects" class="btn primary" id="btnProjects">
-                        <span>View Projects</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M7 17L17 7M7 7h10v10" />
-                        </svg>
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Explore Projects</span>
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <a href="resume_updated.pdf" target="_blank" class="btn outline" id="btnResume">
-                        <span>Download Resume</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="7 10 12 15 17 10" />
-                            <line x1="12" y1="15" x2="12" y2="3" />
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="hero-stats" id="heroStats">
-                    <div class="stat">
-                        <span class="stat-number">90%</span>
-                        <span class="stat-label">Python Proficiency</span>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Core AI Projects</span>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat">
-                        <span class="stat-number">50K+</span>
-                        <span class="stat-label">Records Analyzed</span>
-                    </div>
+                    <a href="#contact" class="btn btn-secondary">Let's Connect</a>
                 </div>
             </div>
-
-            <div class="profile-wrapper" id="profileWrapper">
-                <div class="profile-card">
-                    <div class="scan-line"></div>
-                    <div class="profile-img-container">
-                        <div class="profile-placeholder">🤖 AI & ML Eng</div>
-                    </div>
-                    <div class="profile-hud-data">
-                        <span class="hud-item">SYS.STATUS: ACTIVE</span>
-                        <span class="hud-item">ROLE: ML_ENGINEER</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator" id="scrollIndicator">
-            <span>Scroll Down</span>
-            <div class="scroll-line"></div>
-        </div>
-    </header>
-
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header" data-gsap>
-                <span class="section-tag">Overview</span>
-                <h2>About Me</h2>
-            </div>
-            <div class="about-grid" data-gsap>
-                <div class="about-text">
-                    <p class="about-lead">
-                        I'm a <span class="highlight">Results-driven AI Engineering student</span> specializing in Python-based analytics and machine learning solutions.
-                    </p>
-                    <p>
-                        Proven track record of building data-driven applications with strong expertise in exploratory data analysis (EDA), automated visualizations, and full-stack web backend development. Skilled in transforming raw, unstructured datasets into highly scalable model infrastructures.
-                    </p>
-                    <p class="about-tagline">
-                        Seeking to leverage technical expertise and rigorous optimization frameworks in an <strong>entry-level Data Scientist / AI Analyst role</strong>.
-                    </p>
-                    <div class="about-tags">
-                        <span class="tag">🎓 AI Engineering Student</span>
-                        <span class="tag">📍 Maharashtra, IN</span>
-                        <span class="tag">💼 Open to Internships / Jobs</span>
-                        <span class="tag">🐍 Python Core</span>
-                        <span class="tag">🌐 Django Architecture</span>
-                    </div>
-                </div>
-                <div class="about-card-wrapper">
-                    <div class="glass-card about-info-card">
-                        <div class="info-item">
-                            <span class="info-label">Email</span>
-                            <span class="info-value">g.s.mandal433@gmail.com</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Location</span>
-                            <span class="info-value">Maharashtra, India</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Languages</span>
-                            <span class="info-value">English · Hindi · Marathi</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Availability</span>
-                            <span class="info-value status-available">Immediate Joinee</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</body>
-</html>
+            
+            <div class="hero-visual
