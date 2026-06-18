@@ -1,179 +1,233 @@
 /* ============================================================
-   PREMIUM PORTFOLIO SCRIPTS - GOVARDHAN MANDAL
+   EXECUTIVE ARCHITECTURAL PROFILE INTERFACE - ENGINE
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ---- Navbar Scroll Effect ----
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // ---- Mobile Hamburger Menu ----
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
+    // 1. GLOBAL NAVBAR SCROLL MONITOR
+    const globalNavbar = document.getElementById('globalNavbar');
     
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
+    function evaluateScrollPosition() {
+        if (window.scrollY > 40) {
+            globalNavbar.classList.add('scrolled');
+        } else {
+            globalNavbar.classList.remove('scrolled');
+        }
+    }
+    
+    window.addEventListener('scroll', evaluateScrollPosition);
+    evaluateScrollPosition(); // Pre-check on load
+
+    // 2. RESPONSIVE NAVIGATION MOBILE TOGGLE
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('open');
         });
 
-        // Close menu on navigation link click
-        navLinks.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
+        // Close menu cleanly when any navigation asset is triggered
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('open');
             });
         });
+
+        // Close menu if clicked anywhere outside the container area
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('open');
+            }
+        });
     }
 
-    // ---- Typing Effect Pipeline ----
-    const phrases = [
+    // 3. SECURE ASYNC TYPEWRITER ENGINE
+    const technicalRoles = [
         'AI Engineering Student',
-        'Machine Learning Developer',
-        'Data Scientist',
-        'Django Framework Specialist',
-        'Technical Problem Solver'
+        'Machine Learning Specialist',
+        'Data Infrastructure Architect',
+        'Django Web Developer'
     ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typedEl = document.getElementById('typedText');
+    
+    let activeRoleIndex = 0;
+    let characterIndex = 0;
+    let isReversing = false;
+    const typeTarget = document.getElementById('dynamicType');
 
-    function typeWriter() {
-        if (!typedEl) return;
-        const currentPhrase = phrases[phraseIndex];
+    function executeTypewriterCycle() {
+        if (!typeTarget) return;
         
-        if (isDeleting) {
-            typedEl.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
+        const fullString = technicalRoles[activeRoleIndex];
+        
+        if (isReversing) {
+            typeTarget.textContent = fullString.substring(0, characterIndex - 1);
+            characterIndex--;
         } else {
-            typedEl.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
+            typeTarget.textContent = fullString.substring(0, characterIndex + 1);
+            characterIndex++;
         }
 
-        let speed = isDeleting ? 40 : 80;
+        // Variable execution velocity matrix
+        let executionSpeed = isReversing ? 35 : 75;
 
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            speed = 2200; // Hold phrase visible
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            speed = 300;
+        if (!isReversing && characterIndex === fullString.length) {
+            executionSpeed = 2000; // Static dwell time when text completes
+            isReversing = true;
+        } else if (isReversing && characterIndex === 0) {
+            isReversing = false;
+            activeRoleIndex = (activeRoleIndex + 1) % technicalRoles.length;
+            executionSpeed = 400; // Foundational delay before next string starts
         }
 
-        setTimeout(typeWriter, speed);
+        setTimeout(executeTypewriterCycle, executionSpeed);
     }
 
-    // Initiate typewriter effect
-    if (typedEl) setTimeout(typeWriter, 1000);
+    if (typeTarget) {
+        setTimeout(executeTypewriterCycle, 800);
+    }
 
-    // ---- GSAP Scroll Animations Setup ----
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
+    // 4. CORE GSAP INTERFACE ANIMATIONS PIPELINE
+    if (typeof gsap !== 'undefined') {
+        // Universal defaults initialization
+        gsap.config({ nullTargetWarn: false });
 
-        // Standard fade animations for metrics and structural elements
-        gsap.from('#heroName, #heroDesc, #heroButtons, #heroStats, #heroBadge', {
+        // Synchronous staggered entrance animation matrix for Hero components
+        const heroTimeline = gsap.timeline();
+        heroTimeline.from('.status-indicator, .hero-title, .hero-subtitle, .hero-description, .hero-cta-group', {
             opacity: 0,
-            y: 30,
-            duration: 0.8,
-            stagger: 0.15,
+            y: 25,
+            duration: 0.7,
+            stagger: 0.12,
             ease: 'power3.out'
         });
 
-        // Scroll triggering for generalized sections
-        document.querySelectorAll('[data-gsap]').forEach(el => {
-            gsap.from(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 85%',
-                    toggleActions: 'play none none none'
-                },
-                opacity: 0,
-                y: 30,
-                duration: 0.8,
-                ease: 'power2.out'
+        heroTimeline.from('.executive-profile-card', {
+            opacity: 0,
+            x: 30,
+            scale: 0.98,
+            duration: 0.8,
+            ease: 'power2.out'
+        }, '-=0.5');
+
+        // ScrollTrigger automated registration for block level sections
+        if (typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const modularSections = document.querySelectorAll('.content-section');
+            modularSections.forEach(section => {
+                gsap.from(section.querySelectorAll('.section-header, .about-layout-grid, .skills-category-grid, .project-showcase-card, .timeline-item, .contact-wrapper'), {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 82%',
+                        toggleActions: 'play none none none'
+                    },
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.75,
+                    stagger: 0.15,
+                    ease: 'power2.out'
+                });
             });
-        });
+        }
     }
 
-    // ---- NEURAL NETWORK CANVAS INTUITIVE ENGINE ----
-    const canvas = document.getElementById('bgCanvas');
+    // 5. AMBIENT NEURAL DATASPACE CANVAS ENGINE
+    const canvas = document.getElementById('ambientCanvas');
     if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let neurons = [];
+        const context = canvas.getContext('2d');
+        let dataNodes = [];
+        let executionBoundary = { x: 0, y: 0 };
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        function recalculateCanvasScale() {
+            executionBoundary.x = window.innerWidth;
+            executionBoundary.y = window.innerHeight;
+            canvas.width = executionBoundary.x;
+            canvas.height = executionBoundary.y;
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        
+        window.addEventListener('resize', recalculateCanvasScale);
+        recalculateCanvasScale();
 
-        // Neuron definition blueprint
-        class Neuron {
+        // Object schematic structural blueprint for individual data nodes
+        class DataNode {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.3;
-                this.vy = (Math.random() - 0.5) * 0.3;
-                this.r = Math.random() * 2 + 1;
+                this.x = Math.random() * executionBoundary.x;
+                this.y = Math.random() * executionBoundary.y;
+                this.vectorX = (Math.random() - 0.5) * 0.25; // Controlled slow drift
+                this.vectorY = (Math.random() - 0.5) * 0.25;
+                this.radius = Math.random() * 1.5 + 1;
             }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
 
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            processVectorPosition() {
+                this.x += this.vectorX;
+                this.y += this.vectorY;
+
+                // Reflective wall collision handling vectors
+                if (this.x < 0 || this.x > executionBoundary.x) this.vectorX *= -1;
+                if (this.y < 0 || this.y > executionBoundary.y) this.vectorY *= -1;
             }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
-                ctx.fill();
+
+            renderNode() {
+                context.beginPath();
+                context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                context.fillStyle = 'rgba(56, 189, 248, 0.25)';
+                context.fill();
             }
         }
 
-        // Initialize node pool
-        function initNetwork() {
-            neurons = [];
-            const count = Math.min(60, Math.floor(canvas.width / 20));
-            for (let i = 0; i < count; i++) {
-                neurons.push(new Neuron());
+        function populateNodeInfrastructure() {
+            dataNodes = [];
+            // Dynamically scale node density according to hardware viewport area matrix
+            const targetedDensityCount = Math.min(50, Math.floor(executionBoundary.x / 25));
+            for (let i = 0; i < targetedDensityCount; i++) {
+                dataNodes.push(new DataNode());
             }
         }
-        initNetwork();
+        populateNodeInfrastructure();
 
-        // Render looping mechanism
-        function animateNetwork() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        function renderSystemLoop() {
+            context.clearRect(0, 0, executionBoundary.x, executionBoundary.y);
             
-            neurons.forEach(n => {
-                n.update();
-                n.draw();
+            // Step 1: Render and process individual nodes
+            dataNodes.forEach(node => {
+                node.processVectorPosition();
+                node.renderNode();
             });
 
-            // Connect lines logic based on relative Euclidean proximity
-            for (let i = 0; i < neurons.length; i++) {
-                for (let j = i + 1; j < neurons.length; j++) {
-                    const dist = Math.hypot(neurons[i].x - neurons[j].x, neurons[i].y - neurons[j].y);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(neurons[i].x, neurons[i].y);
-                        ctx.lineTo(neurons[j].x, neurons[j].y);
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 120)})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.stroke();
+            // Step 2: Compute relative proximity matrix vectors for dynamic grid interconnects
+            for (let i = 0; i < dataNodes.length; i++) {
+                for (let j = i + 1; j < dataNodes.length; j++) {
+                    const distanceX = dataNodes[i].x - dataNodes[j].x;
+                    const distanceY = dataNodes[i].y - dataNodes[j].y;
+                    const absoluteDistance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+                    // Map grid lines only if the vectors fall under the standard thresholds
+                    if (absoluteDistance < 130) {
+                        context.beginPath();
+                        context.moveTo(dataNodes[i].x, dataNodes[i].y);
+                        context.lineTo(dataNodes[j].x, dataNodes[j].y);
+                        // Linear transparency degradation scalar based on relative distance geometry
+                        const computedAlpha = 0.12 * (1 - absoluteDistance / 130);
+                        context.strokeStyle = `rgba(56, 189, 248, ${computedAlpha})`;
+                        context.lineWidth = 0.75;
+                        context.stroke();
                     }
                 }
             }
-            requestAnimationFrame(animateNetwork);
+            requestAnimationFrame(renderSystemLoop);
         }
-        animateNetwork();
+        
+        // Run network execution stream
+        requestAnimationFrame(renderSystemLoop);
+        
+        // Re-populate node infrastructure on major resizing thresholds to avoid structural dispersion
+        window.addEventListener('resize', () => {
+            populateNodeInfrastructure();
+        });
     }
 });
