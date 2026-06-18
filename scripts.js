@@ -1,233 +1,291 @@
 /* ============================================================
-   EXECUTIVE ARCHITECTURAL PROFILE INTERFACE - ENGINE
+   PROFESSIONAL PORTFOLIO SCRIPTS - GOVARDHAN MANDAL
+   Clean, Modern, Optimized JavaScript
    ============================================================ */
 
-document.addEventListener('DOMContentLoaded', () => {
+// ---- DOM Elements ----
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+const contactForm = document.getElementById('contactForm');
+const typedText = document.getElementById('typedText');
+const scrollIndicator = document.getElementById('scrollIndicator');
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas ? canvas.getContext('2d') : null;
 
-    // 1. GLOBAL NAVBAR SCROLL MONITOR
-    const globalNavbar = document.getElementById('globalNavbar');
-    
-    function evaluateScrollPosition() {
-        if (window.scrollY > 40) {
-            globalNavbar.classList.add('scrolled');
-        } else {
-            globalNavbar.classList.remove('scrolled');
-        }
+// ---- Navbar Scroll Effect ----
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar?.classList.add('scrolled');
+    } else {
+        navbar?.classList.remove('scrolled');
     }
     
-    window.addEventListener('scroll', evaluateScrollPosition);
-    evaluateScrollPosition(); // Pre-check on load
-
-    // 2. RESPONSIVE NAVIGATION MOBILE TOGGLE
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('open');
-        });
-
-        // Close menu cleanly when any navigation asset is triggered
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('open');
-            });
-        });
-
-        // Close menu if clicked anywhere outside the container area
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('open');
-            }
-        });
+    if (window.scrollY > 100) {
+        scrollIndicator.style.opacity = '0';
+    } else {
+        scrollIndicator.style.opacity = '1';
     }
+}, { passive: true });
 
-    // 3. SECURE ASYNC TYPEWRITER ENGINE
-    const technicalRoles = [
-        'AI Engineering Student',
-        'Machine Learning Specialist',
-        'Data Infrastructure Architect',
-        'Django Web Developer'
-    ];
-    
-    let activeRoleIndex = 0;
-    let characterIndex = 0;
-    let isReversing = false;
-    const typeTarget = document.getElementById('dynamicType');
+// ---- Mobile Hamburger Menu ----
+hamburger?.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+});
 
-    function executeTypewriterCycle() {
-        if (!typeTarget) return;
+navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+    });
+});
+
+// ---- Smooth Scrolling ----
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
         
-        const fullString = technicalRoles[activeRoleIndex];
-        
-        if (isReversing) {
-            typeTarget.textContent = fullString.substring(0, characterIndex - 1);
-            characterIndex--;
-        } else {
-            typeTarget.textContent = fullString.substring(0, characterIndex + 1);
-            characterIndex++;
+        const target = document.querySelector(href);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
         }
+    });
+});
 
-        // Variable execution velocity matrix
-        let executionSpeed = isReversing ? 35 : 75;
+// ---- Typing Animation ----
+const typingPhrases = [
+    'AI Engineering Student',
+    'Data Scientist',
+    'ML Developer',
+    'Full Stack Developer',
+    'Problem Solver'
+];
 
-        if (!isReversing && characterIndex === fullString.length) {
-            executionSpeed = 2000; // Static dwell time when text completes
-            isReversing = true;
-        } else if (isReversing && characterIndex === 0) {
-            isReversing = false;
-            activeRoleIndex = (activeRoleIndex + 1) % technicalRoles.length;
-            executionSpeed = 400; // Foundational delay before next string starts
-        }
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-        setTimeout(executeTypewriterCycle, executionSpeed);
+function typeWriter() {
+    const currentPhrase = typingPhrases[phraseIndex];
+    const isEnd = charIndex === currentPhrase.length;
+    const isStart = charIndex === 0;
+
+    if (isDeleting) {
+        charIndex--;
+    } else {
+        charIndex++;
     }
 
-    if (typeTarget) {
-        setTimeout(executeTypewriterCycle, 800);
+    typedText.textContent = currentPhrase.substring(0, charIndex);
+
+    let speed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && isEnd) {
+        speed = 2000; // Pause at end
+        isDeleting = true;
+    } else if (isDeleting && isStart) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+        speed = 200;
     }
 
-    // 4. CORE GSAP INTERFACE ANIMATIONS PIPELINE
-    if (typeof gsap !== 'undefined') {
-        // Universal defaults initialization
-        gsap.config({ nullTargetWarn: false });
+    setTimeout(typeWriter, speed);
+}
 
-        // Synchronous staggered entrance animation matrix for Hero components
-        const heroTimeline = gsap.timeline();
-        heroTimeline.from('.status-indicator, .hero-title, .hero-subtitle, .hero-description, .hero-cta-group', {
-            opacity: 0,
-            y: 25,
-            duration: 0.7,
-            stagger: 0.12,
-            ease: 'power3.out'
-        });
+setTimeout(() => typeWriter(), 500);
 
-        heroTimeline.from('.executive-profile-card', {
-            opacity: 0,
-            x: 30,
-            scale: 0.98,
-            duration: 0.8,
-            ease: 'power2.out'
-        }, '-=0.5');
+// ---- Canvas Background Animation (Neural Network) ----
+if (canvas && ctx) {
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    resizeCanvas();
+    
+    const particles = [];
+    const particleCount = 50;
+    const connectionDistance = 150;
+    const mouseDistance = 140;
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
-        // ScrollTrigger automated registration for block level sections
-        if (typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.5;
+            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.opacity = Math.random() * 0.5 + 0.2;
+        }
 
-            const modularSections = document.querySelectorAll('.content-section');
-            modularSections.forEach(section => {
-                gsap.from(section.querySelectorAll('.section-header, .about-layout-grid, .skills-category-grid, .project-showcase-card, .timeline-item, .contact-wrapper'), {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 82%',
-                        toggleActions: 'play none none none'
-                    },
-                    opacity: 0,
-                    y: 30,
-                    duration: 0.75,
-                    stagger: 0.15,
-                    ease: 'power2.out'
-                });
-            });
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+            if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(56, 189, 248, ${this.opacity})`;
+            ctx.fill();
         }
     }
 
-    // 5. AMBIENT NEURAL DATASPACE CANVAS ENGINE
-    const canvas = document.getElementById('ambientCanvas');
-    if (canvas) {
-        const context = canvas.getContext('2d');
-        let dataNodes = [];
-        let executionBoundary = { x: 0, y: 0 };
-
-        function recalculateCanvasScale() {
-            executionBoundary.x = window.innerWidth;
-            executionBoundary.y = window.innerHeight;
-            canvas.width = executionBoundary.x;
-            canvas.height = executionBoundary.y;
+    function initParticles() {
+        particles.length = 0;
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
         }
-        
-        window.addEventListener('resize', recalculateCanvasScale);
-        recalculateCanvasScale();
+    }
 
-        // Object schematic structural blueprint for individual data nodes
-        class DataNode {
-            constructor() {
-                this.x = Math.random() * executionBoundary.x;
-                this.y = Math.random() * executionBoundary.y;
-                this.vectorX = (Math.random() - 0.5) * 0.25; // Controlled slow drift
-                this.vectorY = (Math.random() - 0.5) * 0.25;
-                this.radius = Math.random() * 1.5 + 1;
-            }
+    function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
 
-            processVectorPosition() {
-                this.x += this.vectorX;
-                this.y += this.vectorY;
-
-                // Reflective wall collision handling vectors
-                if (this.x < 0 || this.x > executionBoundary.x) this.vectorX *= -1;
-                if (this.y < 0 || this.y > executionBoundary.y) this.vectorY *= -1;
-            }
-
-            renderNode() {
-                context.beginPath();
-                context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                context.fillStyle = 'rgba(56, 189, 248, 0.25)';
-                context.fill();
-            }
-        }
-
-        function populateNodeInfrastructure() {
-            dataNodes = [];
-            // Dynamically scale node density according to hardware viewport area matrix
-            const targetedDensityCount = Math.min(50, Math.floor(executionBoundary.x / 25));
-            for (let i = 0; i < targetedDensityCount; i++) {
-                dataNodes.push(new DataNode());
-            }
-        }
-        populateNodeInfrastructure();
-
-        function renderSystemLoop() {
-            context.clearRect(0, 0, executionBoundary.x, executionBoundary.y);
-            
-            // Step 1: Render and process individual nodes
-            dataNodes.forEach(node => {
-                node.processVectorPosition();
-                node.renderNode();
-            });
-
-            // Step 2: Compute relative proximity matrix vectors for dynamic grid interconnects
-            for (let i = 0; i < dataNodes.length; i++) {
-                for (let j = i + 1; j < dataNodes.length; j++) {
-                    const distanceX = dataNodes[i].x - dataNodes[j].x;
-                    const distanceY = dataNodes[i].y - dataNodes[j].y;
-                    const absoluteDistance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-
-                    // Map grid lines only if the vectors fall under the standard thresholds
-                    if (absoluteDistance < 130) {
-                        context.beginPath();
-                        context.moveTo(dataNodes[i].x, dataNodes[i].y);
-                        context.lineTo(dataNodes[j].x, dataNodes[j].y);
-                        // Linear transparency degradation scalar based on relative distance geometry
-                        const computedAlpha = 0.12 * (1 - absoluteDistance / 130);
-                        context.strokeStyle = `rgba(56, 189, 248, ${computedAlpha})`;
-                        context.lineWidth = 0.75;
-                        context.stroke();
-                    }
+                if (distance < connectionDistance) {
+                    const opacity = (1 - distance / connectionDistance) * 0.15;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(56, 189, 248, ${opacity})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
                 }
             }
-            requestAnimationFrame(renderSystemLoop);
         }
-        
-        // Run network execution stream
-        requestAnimationFrame(renderSystemLoop);
-        
-        // Re-populate node infrastructure on major resizing thresholds to avoid structural dispersion
-        window.addEventListener('resize', () => {
-            populateNodeInfrastructure();
+    }
+
+    function drawMouseConnections() {
+        particles.forEach(particle => {
+            const dx = particle.x - mouse.x;
+            const dy = particle.y - mouse.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < mouseDistance) {
+                const opacity = (1 - distance / mouseDistance) * 0.3;
+                ctx.beginPath();
+                ctx.moveTo(particle.x, particle.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.strokeStyle = `rgba(129, 140, 248, ${opacity})`;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
         });
     }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(10, 14, 39, 0.5)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(particle => {
+            particle.update();
+            particle.draw();
+        });
+
+        drawConnections();
+        drawMouseConnections();
+
+        requestAnimationFrame(animate);
+    }
+
+    initParticles();
+    animate();
+
+    canvas.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initParticles();
+    });
+}
+
+// ---- Contact Form Handling ----
+contactForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = contactForm.querySelector('.btn-primary');
+
+    if (!name || !email || !message) {
+        formMessage.textContent = '⚠️ Please fill all fields';
+        formMessage.style.color = '#ff6b6b';
+        return;
+    }
+
+    const originalText = submitBtn.querySelector('span').textContent;
+    submitBtn.disabled = true;
+    submitBtn.querySelector('span').textContent = 'Sending...';
+
+    // Simulate API call (replace with actual backend)
+    setTimeout(() => {
+        formMessage.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
+        formMessage.style.color = '#34d399';
+        contactForm.reset();
+        submitBtn.disabled = false;
+        submitBtn.querySelector('span').textContent = originalText;
+
+        setTimeout(() => {
+            formMessage.textContent = '';
+        }, 3000);
+    }, 1500);
 });
+
+// ---- Active Navigation Link on Scroll ----
+const sections = document.querySelectorAll('section[id], header[id]');
+const navItems = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        item.style.color = '';
+        if (item.getAttribute('href') === `#${current}`) {
+            item.style.color = '#38bdf8';
+        }
+    });
+}, { passive: true });
+
+// ---- Animate Elements on Scroll (GSAP Alternative) ----
+if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.set('[data-gsap]', { opacity: 0, y: 40 });
+
+    document.querySelectorAll('[data-gsap]').forEach(el => {
+        gsap.to(el, {
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+        });
+    });
+}
