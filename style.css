@@ -631,13 +631,42 @@ img {
     position: relative;
     width: 100%;
     margin-bottom: 16px;
+    perspective: 1000px;
+}
+
+.profile-glow {
+    position: absolute;
+    inset: -6px;
+    background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+    border-radius: 16px;
+    filter: blur(12px);
+    opacity: 0.7;
+    animation: rotateGlow 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .profile-img {
     width: 100%;
     border-radius: 12px;
-    border: 2px solid var(--accent);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.3), inset 0 0 30px rgba(56, 189, 248, 0.1);
+    border: 2px solid rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    background: var(--bg-2);
+}
+
+.profile-img:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.4);
+    border-color: var(--accent);
 }
 
 .profile-info-portal {
