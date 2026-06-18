@@ -1062,6 +1062,11 @@ img {
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid var(--border);
+    overflow: hidden; /* Prevents zoomed image from spilling out */
+}
+
+.project-card:hover .project-banner {
+    transform: scale(1.08) !important;
 }
 
 .project-img-placeholder {
