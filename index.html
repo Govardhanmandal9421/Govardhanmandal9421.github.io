@@ -1,762 +1,608 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Govardhan Mandal | AI & Data Science Portfolio</title>
-    <meta name="description"
-        content="Professional portfolio of Govardhan Mandal – AI Engineering Student specializing in Machine Learning, Data Science, and Full-Stack Development. Building intelligent solutions with Python & Django.">
-    <meta name="keywords"
-        content="Govardhan Mandal, AI Engineering, Machine Learning, Data Science, Python, Django, Portfolio, GHRCE Jalgaon, Neural Networks, Deep Learning">
-    <meta name="author" content="Govardhan Mandal">
-    <meta name="theme-color" content="#38bdf8">
-
+    <title>Govardhan Mandal | Digital Identity</title>
+    <meta name="description" content="Premium, futuristic personal portfolio of Govardhan Mandal. Discover my journey, projects, and tech stack.">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- GSAP Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.1/ScrollTrigger.min.js"></script>
 </head>
+<body class="loading">
 
-<body>
+    <!-- Custom Cursor -->
+    <div id="cursor-glow"></div>
+    <div id="cursor-dot"></div>
 
-    <!-- ================================================
-         NAVBAR - PROFESSIONAL NAVIGATION
-    ================================================= -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <!-- Logo -->
-            <a href="#home" class="nav-logo">
-                <span class="logo-gm">GM</span>
-                <span class="logo-text">Govardhan Mandal</span>
-            </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <h1 class="glitch-text" data-text="GOVARDHAN MANDAL">GOVARDHAN MANDAL</h1>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0%</div>
+        </div>
+    </div>
 
-            <!-- Navigation Links -->
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#expertise" class="nav-link">Expertise</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
 
-            <!-- CTA Button -->
-            <a href="#contact" class="nav-cta">Get In Touch</a>
-
-            <!-- Mobile Menu -->
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
+    <!-- Navigation -->
+    <nav class="premium-nav">
+        <div class="nav-logo magnetic">
+            <span class="logo-mark">GM</span>
+        </div>
+        <ul class="nav-links">
+            <li class="magnetic"><a href="#hero">Home</a></li>
+            <li class="magnetic"><a href="#who-am-i">Journey</a></li>
+            <li class="magnetic"><a href="#tech-stack">Stack</a></li>
+            <li class="magnetic"><a href="#projects">Work</a></li>
+            <li class="magnetic"><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="magnetic" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
             </button>
+            <a href="#contact" class="btn-premium magnetic">Let's Talk</a>
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-toggle magnetic">
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </nav>
 
-    <!-- ================================================
-         HERO SECTION - PREMIUM INTRODUCTION
-    ================================================= -->
-    <header class="hero" id="home">
-        <!-- Neural Network Canvas Background -->
-        <canvas id="neuralCanvas"></canvas>
+    <!-- Floating Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
 
-        <!-- Hero Content -->
-        <div class="hero-container">
-            <div class="hero-text" data-scroll>
-                <!-- Status Badge -->
-                <div class="status-badge">
-                    <span class="status-dot"></span>
-                    Open to Opportunities — Freelance & Full-Time
+    <main>
+        <!-- Interactive Hero Section -->
+        <header id="hero" class="section-hero">
+            <div class="hero-content">
+                <div class="hero-badge reveal-up">
+                    <span class="pulse-dot"></span> Open to new opportunities
                 </div>
-
-                <!-- Main Heading -->
-                <h1 class="hero-title">
-                    Building Intelligent <span class="gradient-text">AI & Data Solutions</span>
+                <h1 class="hero-title reveal-up" style="transition-delay: 0.1s;">
+                    Hi, I'm <span class="gradient-text">Govardhan</span><br>
+                    <span class="hollow-text">Mandal</span>
                 </h1>
-
-                <!-- Subtitle -->
-                <p class="hero-subtitle">
-                    AI Engineering student specializing in Machine Learning, Data Science, and Full-Stack Development.
-                    Transforming complex datasets into actionable intelligence through innovative technology.
+                <div class="hero-role reveal-up" style="transition-delay: 0.2s;">
+                    I am a <span id="dynamic-text"></span><span class="typed-cursor">|</span>
+                </div>
+                <p class="hero-desc reveal-up" style="transition-delay: 0.3s;">
+                    Transforming complex datasets and ideas into intelligent, impactful digital experiences. From exploratory data analysis to full-stack predictive models.
                 </p>
-
-                <!-- Typed Intro -->
-                <div class="hero-typed">
-                    <span class="typed-label">Currently:</span>
-                    <span class="typed-text" id="typedText"></span>
-                    <span class="cursor">_</span>
-                </div>
-
-                <!-- CTA Buttons -->
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M7 17L17 7M7 7h10v10" />
-                        </svg>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Connect With Me</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Tech Stack Preview -->
-                <div class="tech-stack">
-                    <span class="tech-item">Python</span>
-                    <span class="tech-item">Machine Learning</span>
-                    <span class="tech-item">Django</span>
-                    <span class="tech-item">Data Analytics</span>
-                    <span class="tech-item">Deep Learning</span>
+                <div class="hero-actions reveal-up" style="transition-delay: 0.4s;">
+                    <a href="#projects" class="btn-premium magnetic">Explore Work <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn-outline magnetic">Get Resume <i class="fa-solid fa-download"></i></a>
                 </div>
             </div>
-
-            <!-- Hero Stats -->
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <div class="stat-value">88%</div>
-                    <div class="stat-label">ML Accuracy</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">3+</div>
-                    <div class="stat-label">Major Projects</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">50K+</div>
-                    <div class="stat-label">Records Processed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">2027</div>
-                    <div class="stat-label">Graduation</div>
+            <div class="hero-visual reveal-up" style="transition-delay: 0.5s;">
+                <div class="profile-card-3d magnetic">
+                    <img src="govardhan.jpeg" alt="Govardhan Mandal">
+                    <div class="card-glow"></div>
                 </div>
             </div>
+            
+            <a href="#who-am-i" class="scroll-indicator magnetic">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <span class="scroll-text">Scroll Down</span>
+            </a>
+        </header>
 
-            <!-- Scroll Indicator -->
-            <div class="scroll-indicator" id="scrollIndicator">
-                <div class="scroll-line"></div>
-                <span>Scroll to explore</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- ================================================
-         ABOUT SECTION - PERSONAL INTRODUCTION
-    ================================================= -->
-    <section id="about" class="section section-light">
-        <div class="container">
-            <div class="section-header" data-scroll>
-                <span class="section-tag">WHO I AM</span>
-                <h2>Professional Profile</h2>
-            </div>
-
-            <div class="about-grid" data-scroll>
-                <!-- About Text -->
-                <div class="about-content">
-                    <h3>Results-Driven AI Engineering Student</h3>
-                    <p>
-                        I'm Govardhan Mandal, an AI Engineering student from G.H. Raisoni College of Engineering, Jalgaon. 
-                        With a strong foundation in machine learning, data science, and full-stack development, I'm passionate 
-                        about creating intelligent solutions that solve real-world problems.
-                    </p>
-                    <p>
-                        My expertise spans from exploratory data analysis and statistical modeling to building production-ready 
-                        machine learning systems. I combine technical depth with creative problem-solving to deliver impactful results.
-                    </p>
-
-                    <!-- Highlights -->
-                    <div class="highlights">
-                        <div class="highlight-item">
-                            <strong>🎯 Focus:</strong> AI/ML, Data Science, Full-Stack Development
-                        </div>
-                        <div class="highlight-item">
-                            <strong>📍 Location:</strong> Chh. Sambhaji Nagar, Maharashtra, India
-                        </div>
-                        <div class="highlight-item">
-                            <strong>🌐 Languages:</strong> English, Hindi, Marathi
-                        </div>
-                        <div class="highlight-item">
-                            <strong>💼 Status:</strong> <span class="badge-green">Available for Hire</span>
+        <!-- "Who Am I" Timeline Story -->
+        <section id="who-am-i" class="section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">WHO AM I</span>
+                    <h2 class="section-title">My <span class="gradient-text">Journey</span></h2>
+                </div>
+                
+                <div class="story-timeline">
+                    <!-- Card 1 -->
+                    <div class="story-card reveal-up">
+                        <div class="story-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="story-content glass-card">
+                            <h3>The Genesis</h3>
+                            <p>My passion for technology started with an innate curiosity for how things work behind the screen. Choosing AI Engineering was a deliberate step to not just use technology, but shape its future.</p>
                         </div>
                     </div>
-
-                    <!-- Contact Info Quick Links -->
-                    <div class="quick-contact">
-                        <a href="tel:+918767926207" class="contact-link">
-                            <span class="icon">📞</span> +91 8767926207
-                        </a>
-                        <a href="mailto:g.s.mandal433@gmail.com" class="contact-link">
-                            <span class="icon">✉️</span> g.s.mandal433@gmail.com
-                        </a>
-                    </div>
-                </div>
-
-                <!-- About Image/Card -->
-                <div class="about-visual">
-                    <div class="profile-card">
-                        <div class="profile-header">
-                            <div class="profile-status">Available</div>
+                    <!-- Card 2 -->
+                    <div class="story-card reveal-up">
+                        <div class="story-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="story-content glass-card">
+                            <h3>Full-Stack Evolution</h3>
+                            <p>I realized early on that an AI model is only as good as the system that delivers it. I immersed myself in Django and web architecture to build end-to-end solutions.</p>
                         </div>
-                        <div class="profile-body">
-                            <h4>Govardhan Mandal</h4>
-                            <p class="role">AI Engineering Student</p>
-                            <div class="skills-preview">
-                                <span class="skill-badge">Python Expert</span>
-                                <span class="skill-badge">ML Specialist</span>
-                                <span class="skill-badge">Django Developer</span>
-                                <span class="skill-badge">Data Scientist</span>
-                            </div>
-                            <div class="profile-stats">
-                                <div>
-                                    <strong>3+</strong>
-                                    <span>Projects</span>
-                                </div>
-                                <div>
-                                    <strong>88%</strong>
-                                    <span>Accuracy</span>
-                                </div>
-                                <div>
-                                    <strong>2027</strong>
-                                    <span>Grad Year</span>
-                                </div>
-                            </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="story-card reveal-up">
+                        <div class="story-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="story-content glass-card">
+                            <h3>Mission & Values</h3>
+                            <p>My mission is to bridge the gap between complex algorithms and human-centric design. I value clean code, continuous learning, and creating products that genuinely solve problems.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ================================================
-         EXPERTISE SECTION - SKILLS & COMPETENCIES
-    ================================================= -->
-    <section id="expertise" class="section section-dark">
-        <div class="container">
-            <div class="section-header" data-scroll>
-                <span class="section-tag">WHAT I DO</span>
-                <h2>Technical Expertise</h2>
+        <!-- Live Statistics Dashboard -->
+        <section id="statistics" class="section-padding bg-alt">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card glass-card reveal-up magnetic">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <h3 class="counter" data-target="15">0</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-card glass-card reveal-up magnetic" style="transition-delay: 0.1s;">
+                        <i class="fa-brands fa-github"></i>
+                        <h3 class="counter" data-target="42">0</h3>
+                        <p>GitHub Repositories</p>
+                    </div>
+                    <div class="stat-card glass-card reveal-up magnetic" style="transition-delay: 0.2s;">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h3 class="counter" data-target="25">0</h3>
+                        <p>Technologies Learned</p>
+                    </div>
+                    <div class="stat-card glass-card reveal-up magnetic" style="transition-delay: 0.3s;">
+                        <i class="fa-solid fa-code-commit"></i>
+                        <h3 class="counter" data-target="1500">0</h3>
+                        <p>Coding Hours</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- Core Competencies -->
-            <div class="expertise-grid" data-scroll>
-                <!-- Machine Learning -->
-                <div class="expertise-card">
-                    <div class="expertise-icon">🤖</div>
-                    <h3>Machine Learning</h3>
-                    <p>
-                        Specialized in building classification, regression, and clustering models. 
-                        Experience with ensemble methods, neural networks, and statistical modeling.
-                    </p>
-                    <div class="expertise-tags">
-                        <span>Scikit-learn</span>
-                        <span>TensorFlow</span>
-                        <span>Model Tuning</span>
-                        <span>Cross-Validation</span>
-                    </div>
+        <!-- Tech Stack Showcase -->
+        <section id="tech-stack" class="section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">TECHNOLOGY ARSENAL</span>
+                    <h2 class="section-title">My <span class="gradient-text">Tech Stack</span></h2>
                 </div>
 
-                <!-- Data Science -->
-                <div class="expertise-card">
-                    <div class="expertise-icon">📊</div>
-                    <h3>Data Science</h3>
-                    <p>
-                        Expert in exploratory data analysis, statistical analysis, and data visualization. 
-                        Transform raw data into meaningful insights with advanced analytical techniques.
-                    </p>
-                    <div class="expertise-tags">
-                        <span>EDA</span>
-                        <span>Pandas/NumPy</span>
-                        <span>Statistical Testing</span>
-                        <span>Visualization</span>
-                    </div>
+                <div class="filter-controls reveal-up">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="database">Database</button>
+                    <button class="filter-btn" data-filter="ai">AI / ML</button>
                 </div>
 
-                <!-- Backend Development -->
-                <div class="expertise-card">
-                    <div class="expertise-icon">🌐</div>
-                    <h3>Backend Development</h3>
-                    <p>
-                        Build scalable web applications with Django. Database design, API development, 
-                        and full-stack integration with machine learning models.
-                    </p>
-                    <div class="expertise-tags">
+                <div class="tech-grid reveal-up">
+                    <!-- Python -->
+                    <div class="tech-item glass-card magnetic" data-category="backend ai">
+                        <i class="fa-brands fa-python"></i>
+                        <span>Python</span>
+                        <div class="tech-level"><div class="level-fill" style="width: 95%;"></div></div>
+                    </div>
+                    <!-- Django -->
+                    <div class="tech-item glass-card magnetic" data-category="backend">
+                        <i class="fa-solid fa-server"></i>
                         <span>Django</span>
-                        <span>REST APIs</span>
-                        <span>Database Design</span>
-                        <span>Authentication</span>
+                        <div class="tech-level"><div class="level-fill" style="width: 85%;"></div></div>
                     </div>
-                </div>
-
-                <!-- Data Visualization -->
-                <div class="expertise-card">
-                    <div class="expertise-icon">📈</div>
-                    <h3>Data Visualization</h3>
-                    <p>
-                        Create compelling visual narratives from complex data. 
-                        Interactive dashboards and publication-quality graphics.
-                    </p>
-                    <div class="expertise-tags">
-                        <span>Matplotlib</span>
-                        <span>Seaborn</span>
-                        <span>Plotly</span>
-                        <span>Dashboard Design</span>
+                    <!-- HTML/CSS -->
+                    <div class="tech-item glass-card magnetic" data-category="frontend">
+                        <i class="fa-brands fa-html5"></i>
+                        <span>HTML / CSS</span>
+                        <div class="tech-level"><div class="level-fill" style="width: 90%;"></div></div>
                     </div>
-                </div>
 
-                <!-- Deep Learning -->
-                <div class="expertise-card">
-                    <div class="expertise-icon">🧠</div>
-                    <h3>Deep Learning</h3>
-                    <p>
-                        Neural network architecture design, CNN, RNN, and transfer learning. 
-                        Model optimization and deployment strategies.
-                    </p>
-                    <div class="expertise-tags">
-                        <span>Neural Networks</span>
-                        <span>CNNs</span>
-                        <span>RNNs</span>
-                        <span>Transfer Learning</span>
+                    <!-- ML -->
+                    <div class="tech-item glass-card magnetic" data-category="ai">
+                        <i class="fa-solid fa-brain"></i>
+                        <span>Scikit-Learn</span>
+                        <div class="tech-level"><div class="level-fill" style="width: 88%;"></div></div>
                     </div>
-                </div>
-
-                <!-- Problem Solving -->
-                <div class="expertise-card">
-                    <div class="expertise-icon">💡</div>
-                    <h3>Problem Solving</h3>
-                    <p>
-                        Analytical approach to complex challenges. Algorithm optimization, 
-                        system design, and strategic implementation.
-                    </p>
-                    <div class="expertise-tags">
-                        <span>Algorithm Design</span>
-                        <span>System Architecture</span>
-                        <span>Optimization</span>
-                        <span>Documentation</span>
+                    <!-- SQL -->
+                    <div class="tech-item glass-card magnetic" data-category="database">
+                        <i class="fa-solid fa-database"></i>
+                        <span>PostgreSQL</span>
+                        <div class="tech-level"><div class="level-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <!-- Pandas -->
+                    <div class="tech-item glass-card magnetic" data-category="ai database">
+                        <i class="fa-solid fa-table"></i>
+                        <span>Pandas</span>
+                        <div class="tech-level"><div class="level-fill" style="width: 92%;"></div></div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Skill Bars -->
-            <div class="skills-section" data-scroll>
-                <h3 class="skills-heading">Proficiency Levels</h3>
-                <div class="skills-list">
-                    <div class="skill-bar-item">
-                        <div class="skill-header">
-                            <span>Python Programming</span>
-                            <span class="skill-percent">90%</span>
+        <!-- Modern Project Showcase -->
+        <section id="projects" class="section-padding bg-alt">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">SELECTED WORKS</span>
+                    <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+                </div>
+
+                <div class="project-filters reveal-up">
+                    <button class="proj-filter active" data-filter="all">All</button>
+                    <button class="proj-filter" data-filter="web">Web Apps</button>
+                    <button class="proj-filter" data-filter="ai">AI Projects</button>
+                    <button class="proj-filter" data-filter="dash">Dashboards</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card reveal-up" data-category="ai web">
+                        <div class="project-image">
+                            <div class="image-overlay">
+                                <a href="https://github.com/Govardhanmandal9421/student-placement-prediction" target="_blank" class="btn-icon magnetic"><i class="fa-brands fa-github"></i></a>
+                                <a href="#" class="btn-icon magnetic"><i class="fa-solid fa-link"></i></a>
+                            </div>
+                            <img src="data-analysis.png" alt="Placement Prediction">
                         </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" style="width: 90%"></div>
+                        <div class="project-info glass-card">
+                            <div class="project-tags">
+                                <span>Machine Learning</span>
+                                <span>Django</span>
+                            </div>
+                            <h3>Student Placement Prediction</h3>
+                            <p>ML-powered web application predicting placement outcomes using advanced ensemble methods (88.37% accuracy).</p>
+                            <div class="project-tech-mini">
+                                <i class="fa-brands fa-python"></i>
+                                <i class="fa-solid fa-server"></i>
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="skill-bar-item">
-                        <div class="skill-header">
-                            <span>Machine Learning & Scikit-learn</span>
-                            <span class="skill-percent">88%</span>
+                    <!-- Project 2 -->
+                    <div class="project-card reveal-up" data-category="dash web">
+                        <div class="project-image">
+                            <div class="image-overlay">
+                                <a href="https://github.com/Govardhanmandal9421/django-data-visualization-dashboard" target="_blank" class="btn-icon magnetic"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                            <img src="django-bg.png" alt="EDA Dashboard">
                         </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" style="width: 88%"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar-item">
-                        <div class="skill-header">
-                            <span>Data Analysis & Pandas/NumPy</span>
-                            <span class="skill-percent">87%</span>
-                        </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" style="width: 87%"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar-item">
-                        <div class="skill-header">
-                            <span>Django Web Development</span>
-                            <span class="skill-percent">82%</span>
-                        </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" style="width: 82%"></div>
+                        <div class="project-info glass-card">
+                            <div class="project-tags">
+                                <span>Data Science</span>
+                                <span>Dashboard</span>
+                            </div>
+                            <h3>Comprehensive EDA Dashboard</h3>
+                            <p>Automated EDA platform analyzing 50k+ records with rich visual insights and an intelligent cleaning pipeline.</p>
+                            <div class="project-tech-mini">
+                                <i class="fa-brands fa-python"></i>
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="skill-bar-item">
-                        <div class="skill-header">
-                            <span>Data Visualization</span>
-                            <span class="skill-percent">85%</span>
+                    <!-- Project 3 -->
+                    <div class="project-card reveal-up" data-category="web">
+                        <div class="project-image">
+                            <div class="image-overlay">
+                                <a href="https://github.com/Govardhanmandal9421" target="_blank" class="btn-icon magnetic"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                            <img src="ml-bg(1).png" alt="Recipe App">
                         </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" style="width: 85%"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar-item">
-                        <div class="skill-header">
-                            <span>Statistical Analysis</span>
-                            <span class="skill-percent">83%</span>
-                        </div>
-                        <div class="skill-track">
-                            <div class="skill-fill" style="width: 83%"></div>
+                        <div class="project-info glass-card">
+                            <div class="project-tags">
+                                <span>Full Stack</span>
+                                <span>CRUD</span>
+                            </div>
+                            <h3>Recipe Management App</h3>
+                            <p>Full-stack Django application handling 1,000+ recipes with secure authentication and RBAC.</p>
+                            <div class="project-tech-mini">
+                                <i class="fa-brands fa-js"></i>
+                                <i class="fa-solid fa-database"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ================================================
-         PROJECTS SECTION - FEATURED WORK
-    ================================================= -->
-    <section id="projects" class="section section-light">
+        <!-- Detailed Case Study Section -->
+        <section id="case-studies" class="section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">DEEP DIVE</span>
+                    <h2 class="section-title">Case <span class="gradient-text">Studies</span></h2>
+                </div>
+
+                <div class="case-study-card glass-card reveal-up">
+                    <div class="cs-header">
+                        <h3>Placement Prediction Engine Architecture</h3>
+                        <span class="cs-status">Completed</span>
+                    </div>
+                    <div class="cs-body">
+                        <div class="cs-block">
+                            <h4><i class="fa-solid fa-triangle-exclamation"></i> The Problem</h4>
+                            <p>Students often lack visibility into their placement probabilities based on academic and extracurricular metrics.</p>
+                        </div>
+                        <div class="cs-block">
+                            <h4><i class="fa-solid fa-lightbulb"></i> The Solution</h4>
+                            <p>Developed an ensemble stacking classifier (LR, SVM, KNN) served via a high-performance Django REST backend.</p>
+                        </div>
+                        <div class="cs-block">
+                            <h4><i class="fa-solid fa-trophy"></i> Outcome</h4>
+                            <p>Achieved 88.37% prediction accuracy and sub-100ms response times for real-time form evaluations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Activity Heatmap Representation -->
+        <section id="github-activity" class="section-padding bg-alt">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">CONSISTENCY</span>
+                    <h2 class="section-title">Code <span class="gradient-text">Activity</span></h2>
+                </div>
+                
+                <div class="github-container glass-card reveal-up">
+                    <div class="gh-stats">
+                        <div class="gh-stat-item">
+                            <span class="gh-num">342</span>
+                            <span class="gh-label">Contributions in the last year</span>
+                        </div>
+                        <div class="gh-stat-item">
+                            <span class="gh-num">14</span>
+                            <span class="gh-label">Current Streak (Days)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulated Heatmap Grid -->
+                    <div class="heatmap-grid" id="heatmap-container">
+                        <!-- Generated via JS -->
+                    </div>
+                    
+                    <div class="heatmap-legend">
+                        Less <span class="legend-box level-0"></span><span class="legend-box level-1"></span><span class="legend-box level-2"></span><span class="legend-box level-3"></span><span class="legend-box level-4"></span> More
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Wall -->
+        <section id="achievements" class="section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">MILESTONES</span>
+                    <h2 class="section-title">Achievement <span class="gradient-text">Wall</span></h2>
+                </div>
+
+                <div class="achievements-grid">
+                    <div class="achievement-card glass-card reveal-up magnetic">
+                        <div class="achievement-icon"><i class="fa-solid fa-certificate"></i></div>
+                        <h4>Python Data Analysis</h4>
+                        <p class="issuer">LinkedIn Learning</p>
+                        <p class="date">Feb 2026</p>
+                    </div>
+                    <div class="achievement-card glass-card reveal-up magnetic" style="transition-delay: 0.1s;">
+                        <div class="achievement-icon"><i class="fa-solid fa-code"></i></div>
+                        <h4>CS Principles: Programming</h4>
+                        <p class="issuer">LinkedIn Learning</p>
+                        <p class="date">Feb 2026</p>
+                    </div>
+                    <div class="achievement-card glass-card reveal-up magnetic" style="transition-delay: 0.2s;">
+                        <div class="achievement-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h4>AI Engineering Major</h4>
+                        <p class="issuer">GHRCE Jalgaon</p>
+                        <p class="date">Expected 2027</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="section-padding bg-alt">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">WORDS FROM OTHERS</span>
+                    <h2 class="section-title">Client & Peer <span class="gradient-text">Feedback</span></h2>
+                </div>
+
+                <div class="testimonial-slider glass-card reveal-up">
+                    <div class="testimonial-slide active">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Govardhan's ability to seamlessly integrate machine learning models into robust web applications is truly impressive. His work on the placement predictor was flawless."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                            <div>
+                                <h5>Project Supervisor</h5>
+                                <span>Academic Mentor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide Indicators -->
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toolbox / Desk Layout -->
+        <section id="toolbox" class="section-padding">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">MY WORKSPACE</span>
+                    <h2 class="section-title">The <span class="gradient-text">Toolbox</span></h2>
+                </div>
+                
+                <div class="toolbox-grid">
+                    <div class="tool-card glass-card magnetic reveal-up">
+                        <i class="fa-solid fa-code"></i>
+                        <h4>VS Code</h4>
+                        <p>My primary editor, configured with advanced linting and AI completions.</p>
+                    </div>
+                    <div class="tool-card glass-card magnetic reveal-up" style="transition-delay: 0.1s;">
+                        <i class="fa-brands fa-github"></i>
+                        <h4>GitHub</h4>
+                        <p>Version control, CI/CD pipelines, and open-source collaboration.</p>
+                    </div>
+                    <div class="tool-card glass-card magnetic reveal-up" style="transition-delay: 0.2s;">
+                        <i class="fa-brands fa-figma"></i>
+                        <h4>Figma</h4>
+                        <p>For prototyping UI/UX before writing a single line of frontend code.</p>
+                    </div>
+                    <div class="tool-card glass-card magnetic reveal-up" style="transition-delay: 0.3s;">
+                        <i class="fa-solid fa-terminal"></i>
+                        <h4>Terminal</h4>
+                        <p>ZSH with custom aliases for lightning-fast workflow execution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Preview -->
+        <section id="blog" class="section-padding bg-alt">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <span class="section-tag">INSIGHTS</span>
+                    <h2 class="section-title">Latest <span class="gradient-text">Articles</span></h2>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card glass-card reveal-up magnetic">
+                        <div class="blog-thumb">
+                            <div class="blog-category">Machine Learning</div>
+                            <img src="ml-bg(1).png" alt="Blog 1">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> Jun 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+                            </div>
+                            <h3>Optimizing Stacking Classifiers for Web Deployment</h3>
+                            <a href="#" class="read-more">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card glass-card reveal-up magnetic" style="transition-delay: 0.2s;">
+                        <div class="blog-thumb">
+                            <div class="blog-category">Architecture</div>
+                            <img src="django-bg.png" alt="Blog 2">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span><i class="fa-regular fa-calendar"></i> May 2026</span>
+                                <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+                            </div>
+                            <h3>Structuring Django Projects for Scalability</h3>
+                            <a href="#" class="read-more">Read Article <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding">
+            <div class="container">
+                <div class="contact-wrapper glass-card reveal-up">
+                    <div class="contact-info">
+                        <h2>Let's build something <span class="gradient-text">extraordinary</span> together.</h2>
+                        <p>Whether you have a project in mind or just want to chat about AI and Web Architecture, I'm always open to connecting.</p>
+                        
+                        <div class="contact-methods">
+                            <a href="mailto:g.s.mandal433@gmail.com" class="contact-method magnetic">
+                                <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div>
+                                    <h5>Email</h5>
+                                    <span>g.s.mandal433@gmail.com</span>
+                                </div>
+                            </a>
+                            <a href="tel:+918767926207" class="contact-method magnetic">
+                                <div class="icon"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <h5>WhatsApp / Phone</h5>
+                                    <span>+91 8767926207</span>
+                                </div>
+                            </a>
+                            <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank" class="contact-method magnetic">
+                                <div class="icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                                <div>
+                                    <h5>LinkedIn</h5>
+                                    <span>Connect Professionally</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form id="premium-contact-form" novalidate>
+                            <div class="input-group">
+                                <input type="text" id="name" required placeholder=" ">
+                                <label for="name">Your Name</label>
+                                <div class="input-line"></div>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" required placeholder=" ">
+                                <label for="email">Email Address</label>
+                                <div class="input-line"></div>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="subject" required placeholder=" ">
+                                <label for="subject">Subject</label>
+                                <div class="input-line"></div>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="message" required placeholder=" " rows="4"></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="input-line"></div>
+                            </div>
+                            <button type="submit" class="btn-premium btn-submit magnetic">
+                                <span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                            <div class="form-feedback" id="form-feedback"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="premium-footer">
         <div class="container">
-            <div class="section-header" data-scroll>
-                <span class="section-tag">PORTFOLIO</span>
-                <h2>Featured Projects</h2>
-                <p class="section-subtitle">Real-world applications showcasing my expertise in AI/ML and full-stack development</p>
-            </div>
-
-            <div class="projects-grid" data-scroll>
-                <!-- Project 1 -->
-                <article class="project-card" data-scroll>
-                    <div class="project-header">
-                        <span class="project-number">01</span>
-                        <a href="https://github.com/Govardhanmandal9421/student-placement-prediction" target="_blank" class="project-link" title="View on GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="project-image">
-                        <div class="image-placeholder">🎓</div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Machine Learning</span>
-                        <h3>Student Placement Prediction System</h3>
-                        <p>
-                            ML-powered Django web application that predicts placement outcomes using advanced ensemble methods.
-                            Achieved 88.37% accuracy through stacking classifier methodology.
-                        </p>
-                        <ul class="project-highlights">
-                            <li><strong>88.37%</strong> prediction accuracy with stacking classifier</li>
-                            <li><strong>6 classifiers</strong> evaluated (LR, SVM, KNN ensemble)</li>
-                            <li><strong>5-fold</strong> cross-validation strategy</li>
-                            <li>Real-time form-based predictions with Joblib persistence</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>Django</span>
-                            <span>Scikit-learn</span>
-                            <span>Python</span>
-                            <span>Pandas</span>
-                            <span>Joblib</span>
-                        </div>
-                        <a href="https://github.com/Govardhanmandal9421/student-placement-prediction" target="_blank" class="project-btn">
-                            View Project →
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="project-card" data-scroll>
-                    <div class="project-header">
-                        <span class="project-number">02</span>
-                        <a href="https://github.com/Govardhanmandal9421/django-data-visualization-dashboard" target="_blank" class="project-link" title="View on GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="project-image">
-                        <div class="image-placeholder">📊</div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Data Science</span>
-                        <h3>Data Visualization & EDA Dashboard</h3>
-                        <p>
-                            Comprehensive automated EDA platform analyzing 50,000+ records with rich visual insights.
-                            95% data quality achieved through intelligent cleaning pipeline.
-                        </p>
-                        <ul class="project-highlights">
-                            <li><strong>50,000+</strong> records automated analysis</li>
-                            <li><strong>95%</strong> data quality with automated cleaning</li>
-                            <li><strong>12+ key trends</strong> identified and visualized</li>
-                            <li><strong>15+ chart types</strong> for comprehensive insights</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Pandas</span>
-                            <span>Matplotlib</span>
-                            <span>Seaborn</span>
-                            <span>Django</span>
-                        </div>
-                        <a href="https://github.com/Govardhanmandal9421/django-data-visualization-dashboard" target="_blank" class="project-btn">
-                            View Project →
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="project-card" data-scroll>
-                    <div class="project-header">
-                        <span class="project-number">03</span>
-                        <a href="https://github.com/Govardhanmandal9421" target="_blank" class="project-link" title="View on GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="project-image">
-                        <div class="image-placeholder">🍽️</div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Full Stack</span>
-                        <h3>Recipe Management Web Application</h3>
-                        <p>
-                            Full-stack Django application with complete CRUD operations handling 1,000+ recipes.
-                            Secure authentication and role-based access control.
-                        </p>
-                        <ul class="project-highlights">
-                            <li><strong>1,000+</strong> recipe records managed with zero data loss</li>
-                            <li><strong>50+ concurrent</strong> user sessions handled securely</li>
-                            <li><strong>40% reduced</strong> database redundancy via Django ORM</li>
-                            <li>Role-based access control and authentication system</li>
-                        </ul>
-                        <div class="project-tech">
-                            <span>Django</span>
-                            <span>Python</span>
-                            <span>PostgreSQL</span>
-                            <span>HTML/CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <a href="https://github.com/Govardhanmandal9421" target="_blank" class="project-btn">
-                            View Project →
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================
-         EXPERIENCE SECTION - ACADEMIC & PROFESSIONAL
-    ================================================= -->
-    <section id="experience" class="section section-dark">
-        <div class="container">
-            <div class="section-header" data-scroll>
-                <span class="section-tag">BACKGROUND</span>
-                <h2>Education & Certifications</h2>
-            </div>
-
-            <div class="experience-grid" data-scroll>
-                <!-- Education -->
-                <div class="experience-item education-card">
-                    <div class="experience-icon">🎓</div>
-                    <div class="experience-body">
-                        <h3>B.E. in Artificial Intelligence</h3>
-                        <p class="institution">G.H. Raisoni College of Engineering, Jalgaon</p>
-                        <p class="duration">Expected Graduation: 2027</p>
-                        <div class="subjects">
-                            <span>Data Structures & Algorithms</span>
-                            <span>Machine Learning</span>
-                            <span>Database Management</span>
-                            <span>Python Programming</span>
-                            <span>Statistical Analysis</span>
-                            <span>Neural Networks</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certification 1 -->
-                <div class="experience-item cert-card">
-                    <div class="experience-icon">📜</div>
-                    <div class="experience-body">
-                        <h3>Python Data Analysis</h3>
-                        <p class="institution">LinkedIn Learning</p>
-                        <p class="duration">Completed: February 2026</p>
-                        <p class="description">Comprehensive training in data analysis, statistical methods, and Python programming for data science applications.</p>
-                    </div>
-                </div>
-
-                <!-- Certification 2 -->
-                <div class="experience-item cert-card">
-                    <div class="experience-icon">📜</div>
-                    <div class="experience-body">
-                        <h3>Computer Science Principles: Programming</h3>
-                        <p class="institution">LinkedIn Learning</p>
-                        <p class="duration">Completed: February 2026</p>
-                        <p class="description">Fundamentals of computer science and programming principles with hands-on coding practice.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================
-         CONTACT SECTION - PROFESSIONAL INQUIRY
-    ================================================= -->
-    <section id="contact" class="section section-light">
-        <div class="container">
-            <div class="section-header" data-scroll>
-                <span class="section-tag">GET IN TOUCH</span>
-                <h2>Let's Collaborate</h2>
-                <p class="section-subtitle">Open to freelance projects, full-time roles, and exciting opportunities</p>
-            </div>
-
-            <div class="contact-wrapper" data-scroll>
-                <!-- Contact Info -->
-                <div class="contact-info">
-                    <h3>Direct Contact</h3>
-
-                    <div class="contact-methods">
-                        <!-- Email -->
-                        <div class="contact-method">
-                            <div class="method-icon">📧</div>
-                            <div class="method-content">
-                                <h4>Email</h4>
-                                <a href="mailto:g.s.mandal433@gmail.com">g.s.mandal433@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <!-- Phone -->
-                        <div class="contact-method">
-                            <div class="method-icon">📱</div>
-                            <div class="method-content">
-                                <h4>Phone</h4>
-                                <a href="tel:+918767926207">+91 8767926207</a>
-                            </div>
-                        </div>
-
-                        <!-- Location -->
-                        <div class="contact-method">
-                            <div class="method-icon">📍</div>
-                            <div class="method-content">
-                                <h4>Location</h4>
-                                <p>Chh. Sambhaji Nagar, Maharashtra, India</p>
-                            </div>
-                        </div>
-
-                        <!-- LinkedIn -->
-                        <div class="contact-method">
-                            <div class="method-icon">💼</div>
-                            <div class="method-content">
-                                <h4>LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank">Connect on LinkedIn</a>
-                            </div>
-                        </div>
-
-                        <!-- GitHub -->
-                        <div class="contact-method">
-                            <div class="method-icon">🔗</div>
-                            <div class="method-content">
-                                <h4>GitHub</h4>
-                                <a href="https://github.com/Govardhanmandal9421" target="_blank">@Govardhanmandal9421</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Social Links -->
-                    <div class="social-links">
-                        <a href="https://github.com/Govardhanmandal9421" target="_blank" class="social-icon" title="GitHub">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank" class="social-icon" title="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </a>
-                        <a href="mailto:g.s.mandal433@gmail.com" class="social-icon" title="Email">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contactForm">
-                        <h3>Send a Message</h3>
-
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Project Inquiry / Collaboration">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">
-                            <span>Send Message</span>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13" />
-                                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                            </svg>
-                        </button>
-
-                        <p class="form-message" id="formMessage"></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================================================
-         FOOTER - PROFESSIONAL CLOSING
-    ================================================= -->
-    <footer class="footer">
-        <div class="footer-container">
             <div class="footer-content">
-                <div class="footer-branding">
-                    <h3>Govardhan Mandal</h3>
-                    <p>AI Engineering Student | Data Science & ML Specialist</p>
+                <div class="footer-brand">
+                    <h2>GOVARDHAN <span class="hollow-text">MANDAL</span></h2>
+                    <p>AI Engineer & Full-Stack Developer</p>
                 </div>
-
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#expertise">Expertise</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-
                 <div class="footer-socials">
-                    <a href="https://github.com/Govardhanmandal9421" target="_blank" aria-label="GitHub">GitHub</a>
-                    <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
-                    <a href="mailto:g.s.mandal433@gmail.com" aria-label="Email">Email</a>
+                    <a href="https://github.com/Govardhanmandal9421" target="_blank" class="magnetic"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/govardhan-mandal-0a4346310/" target="_blank" class="magnetic"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:g.s.mandal433@gmail.com" class="magnetic"><i class="fa-solid fa-envelope"></i></a>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>&copy; 2026 Govardhan Mandal. All rights reserved.</p>
-                <p>Crafted with passion for technology and innovation</p>
+                <p>&copy; <span id="current-year"></span> Govardhan Mandal. All rights reserved.</p>
+                <div class="footer-easter-egg" id="easter-egg-hint">Hint: Up Up Down Down Left Right Left Right B A</div>
+                <button id="back-to-top" class="magnetic" aria-label="Back to Top"><i class="fa-solid fa-arrow-up"></i></button>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="scripts.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
