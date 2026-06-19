@@ -590,25 +590,26 @@
                     <div class="contact-form-container">
                         <form id="premium-contact-form" novalidate>
                             <div class="input-group">
-                                <input type="text" id="name" required placeholder=" ">
+                                <input type="text" id="name" name="name" required placeholder=" ">
                                 <label for="name">Your Name</label>
                                 <div class="input-line"></div>
                             </div>
                             <div class="input-group">
-                                <input type="email" id="email" required placeholder=" ">
+                                <input type="email" id="email" name="email" required placeholder=" ">
                                 <label for="email">Email Address</label>
                                 <div class="input-line"></div>
                             </div>
                             <div class="input-group">
-                                <input type="text" id="subject" required placeholder=" ">
+                                <input type="text" id="subject" name="subject" required placeholder=" ">
                                 <label for="subject">Subject</label>
                                 <div class="input-line"></div>
                             </div>
                             <div class="input-group">
-                                <textarea id="message" required placeholder=" " rows="4"></textarea>
+                                <textarea id="message" name="message" required placeholder=" " rows="4"></textarea>
                                 <label for="message">Your Message</label>
                                 <div class="input-line"></div>
                             </div>
+                            <input type="hidden" id="time" name="time">
                             <button type="submit" class="btn-premium btn-submit magnetic">
                                 <span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>
                             </button>
