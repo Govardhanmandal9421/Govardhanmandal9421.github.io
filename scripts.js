@@ -421,9 +421,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const feedback = document.getElementById('form-feedback');
             const submitBtn = form.querySelector('.btn-submit');
 
-            // Basic validation
+            // Basic validation - skip hidden inputs
             let valid = true;
-            form.querySelectorAll('input, textarea').forEach(input => {
+            form.querySelectorAll('input:not([type="hidden"]), textarea').forEach(input => {
                 if (!input.value.trim()) valid = false;
             });
 
@@ -431,6 +431,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 feedback.innerText = "Please fill out all required fields.";
                 feedback.style.color = "var(--accent-2)";
                 return;
+            }
+
+            // Auto-fill current time for {{time}} in EmailJS template
+            const timeField = document.getElementById('time');
+            if (timeField) {
+                timeField.value = new Date().toLocaleString('en-IN', {
+                    weekday: 'short', year: 'numeric', month: 'short',
+                    day: 'numeric', hour: '2-digit', minute: '2-digit'
+                });
             }
 
             // Show loading state
