@@ -410,26 +410,51 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Form Validation (Simple visual feedback)
+    // EmailJS Initialization - Replace with your actual keys from emailjs.com
+    emailjs.init("YOUR_PUBLIC_KEY"); // <-- Step 3: Paste your EmailJS Public Key here
+
+    // Contact Form - Real Email Sending via EmailJS
     const form = document.getElementById('premium-contact-form');
-    if(form) {
+    if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const feedback = document.getElementById('form-feedback');
+            const submitBtn = form.querySelector('.btn-submit');
+
             // Basic validation
             let valid = true;
             form.querySelectorAll('input, textarea').forEach(input => {
-                if(!input.value) valid = false;
+                if (!input.value.trim()) valid = false;
             });
-            
-            if(valid) {
-                feedback.innerText = "Message transmitted securely. I will respond shortly.";
-                feedback.style.color = "var(--accent-1)";
-                form.reset();
-            } else {
+
+            if (!valid) {
                 feedback.innerText = "Please fill out all required fields.";
                 feedback.style.color = "var(--accent-2)";
+                return;
             }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            feedback.innerText = "";
+
+            // EmailJS send
+            // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
+            emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", form)
+                .then(() => {
+                    feedback.innerText = "✅ Message sent! I'll get back to you soon.";
+                    feedback.style.color = "var(--accent-1)";
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>';
+                })
+                .catch((error) => {
+                    console.error("EmailJS Error:", error);
+                    feedback.innerText = "❌ Something went wrong. Please try emailing directly at g.s.mandal433@gmail.com";
+                    feedback.style.color = "var(--accent-2)";
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Send Message</span> <i class="fa-solid fa-paper-plane"></i>';
+                });
         });
     }
 
