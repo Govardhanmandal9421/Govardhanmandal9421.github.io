@@ -421,13 +421,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const feedback = document.getElementById('form-feedback');
             const submitBtn = form.querySelector('.btn-submit');
 
-            // Basic validation - skip hidden inputs
-            let valid = true;
-            form.querySelectorAll('input:not([type="hidden"]), textarea').forEach(input => {
-                if (!input.value.trim()) valid = false;
-            });
+            // Basic validation - check each field directly
+            const nameVal = document.getElementById('name').value.trim();
+            const emailVal = document.getElementById('email').value.trim();
+            const subjectVal = document.getElementById('subject').value.trim();
+            const messageVal = document.getElementById('message').value.trim();
 
-            if (!valid) {
+            if (!nameVal || !emailVal || !subjectVal || !messageVal) {
                 feedback.innerText = "Please fill out all required fields.";
                 feedback.style.color = "var(--accent-2)";
                 return;
