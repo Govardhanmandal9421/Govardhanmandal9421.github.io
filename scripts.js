@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // EmailJS Initialization - Replace with your actual keys from emailjs.com
-    emailjs.init("YOUR_PUBLIC_KEY"); // <-- Step 3: Paste your EmailJS Public Key here
+    emailjs.init("d2puZ2XIYjd6UNekY");
 
     // Contact Form - Real Email Sending via EmailJS
     const form = document.getElementById('premium-contact-form');
@@ -440,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // EmailJS send
             // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
-            emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", form)
+            emailjs.sendForm("service_daz4yv4", "template_9q55euf", form)
                 .then(() => {
                     feedback.innerText = "✅ Message sent! I'll get back to you soon.";
                     feedback.style.color = "var(--accent-1)";
